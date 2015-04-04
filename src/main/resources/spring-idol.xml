@@ -46,14 +46,16 @@
 
     <aop:config>
         <aop:aspect ref="audience">
+            <aop:pointcut id="perfomance"
+                          expression="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
             <aop:before method="takeSeats"
-                        pointcut="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
+                        pointcut-ref="perfomance"/>
             <aop:before method="turnOffCellPhones"
-                        pointcut="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
+                        pointcut-ref="perfomance"/>
             <aop:after-returning method="applaud"
-                                 pointcut="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
+                                 pointcut-ref="perfomance"/>
             <aop:after-throwing method="demandRefund"
-                                pointcut="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
+                                pointcut-ref="perfomance"/>
         </aop:aspect>
     </aop:config>
 </beans>
