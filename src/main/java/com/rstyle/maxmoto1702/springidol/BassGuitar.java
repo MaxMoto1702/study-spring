@@ -11,7 +11,8 @@ public class BassGuitar implements Instrument {
     private static final Logger LOG = LoggerFactory.getLogger(BassGuitar.class);
 
     @Override
-    public void play() {
+    public void play() throws PerformanceException {
         LOG.info("Play on bass guitar");
+        throw new PerformanceException();
     }
 }

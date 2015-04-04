@@ -1,5 +1,7 @@
 package com.rstyle.maxmoto1702.springidol;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -7,11 +9,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Created by maksim.serebryanskiy on 02.04.2015.
  */
 public class SpringIdolMain {
-    
-    public static void main(String[] args) throws PerformanceException {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SpringIdolMain.class);
+
+    public static void main(String[] args) {
         // Загрузка контекста Spring
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-idol.xml");
-        
+
         // Получение компонента duke
         Performer duke = (Performer) context.getBean("duke");
         Performer kenny = (Performer) context.getBean("kenny");
@@ -22,9 +26,13 @@ public class SpringIdolMain {
         Ticket ticket2 = (Ticket) context.getBean("ticket");
 
         // Использование компонента duke
-        duke.perform();
-        kenny.perform();
-        max.perform();
-        hank.perform();
+        try {
+            duke.perform();
+            kenny.perform();
+            max.perform();
+            hank.perform();
+        } catch (PerformanceException e) {
+            LOG.error("PerformanceException", e);
+        }
     }
 }
