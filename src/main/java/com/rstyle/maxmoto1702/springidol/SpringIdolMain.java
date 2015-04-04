@@ -1,7 +1,5 @@
 package com.rstyle.maxmoto1702.springidol;
 
-import com.rstyle.maxmoto1702.knights.Knight;
-import com.rstyle.maxmoto1702.knights.QuestException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,7 +17,6 @@ public class SpringIdolMain {
         Performer kenny = (Performer) context.getBean("kenny");
         Performer max = (Performer) context.getBean("max");
         Performer hank = (Performer) context.getBean("hank");
-        Performer carl = (Performer) context.getBean("carl");
 
         Ticket ticket1 = (Ticket) context.getBean("ticket");
         Ticket ticket2 = (Ticket) context.getBean("ticket");
@@ -29,6 +26,5 @@ public class SpringIdolMain {
         kenny.perform();
         max.perform();
         hank.perform();
-        carl.perform();
     }
 }

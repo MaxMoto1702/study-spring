@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:p="http://www.springframework.org/schema/p"
+<beans xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     
     <!-- Здесь должны находиться объявления компонентов -->
     <bean id="duke" class="com.rstyle.maxmoto1702.springidol.PoeticJuggler">
@@ -27,10 +30,6 @@
             </list>
         </property>
     </bean>
-    <bean id="carl"
-          class="com.rstyle.maxmoto1702.springidol.Instrumentalist">
-        <property name="song" value="#{kenny.screamSong()?.toUpperCase()}" />
-    </bean>
     
     <bean id="sonnet29" class="com.rstyle.maxmoto1702.springidol.Sonnet29"/>
 
@@ -42,4 +41,19 @@
 
     <bean id="guitar" class="com.rstyle.maxmoto1702.springidol.Guitar"/>
     <bean id="bassGuitar" class="com.rstyle.maxmoto1702.springidol.BassGuitar"/>
+
+    <bean id="audience" class="com.rstyle.maxmoto1702.springidol.Audience"/>
+
+    <aop:config>
+        <aop:aspect ref="audience">
+            <aop:before method="takeSeats"
+                        pointcut="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
+            <aop:before method="turnOffCellPhones"
+                        pointcut="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
+            <aop:after-returning method="applaud"
+                                 pointcut="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
+            <aop:after-throwing method="demandRefund"
+                                pointcut="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
+        </aop:aspect>
+    </aop:config>
 </beans>
