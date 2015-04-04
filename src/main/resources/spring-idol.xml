@@ -44,18 +44,29 @@
 
     <bean id="audience" class="com.rstyle.maxmoto1702.springidol.Audience"/>
 
+    <!--<aop:config>-->
+    <!--<aop:aspect ref="audience">-->
+    <!--<aop:pointcut id="perfomance"-->
+    <!--expression="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>-->
+    <!--<aop:before method="takeSeats"-->
+    <!--pointcut-ref="perfomance"/>-->
+    <!--<aop:before method="turnOffCellPhones"-->
+    <!--pointcut-ref="perfomance"/>-->
+    <!--<aop:after-returning method="applaud"-->
+    <!--pointcut-ref="perfomance"/>-->
+    <!--<aop:after-throwing method="demandRefund"-->
+    <!--pointcut-ref="perfomance"/>-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
     <aop:config>
         <aop:aspect ref="audience">
-            <aop:pointcut id="perfomance"
-                          expression="execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"/>
-            <aop:before method="takeSeats"
-                        pointcut-ref="perfomance"/>
-            <aop:before method="turnOffCellPhones"
-                        pointcut-ref="perfomance"/>
-            <aop:after-returning method="applaud"
-                                 pointcut-ref="perfomance"/>
-            <aop:after-throwing method="demandRefund"
-                                pointcut-ref="perfomance"/>
+            <aop:pointcut id="performance2" expression=
+                    "execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"
+                    />
+            <aop:around
+                    pointcut-ref="performance2"
+                    method="watchPerformance"/>
         </aop:aspect>
     </aop:config>
 </beans>
