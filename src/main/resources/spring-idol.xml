@@ -62,10 +62,10 @@
         </property>
     </bean>
 
-    <bean class="com.rstyle.maxmoto1702.springidol.JudgeAspect"
-          factory-method="aspectOf">
-        <property name="criticismEngine" ref="criticismEngine"/>
-    </bean>
+    <!--<bean class="com.rstyle.maxmoto1702.springidol.JudgeAspect"-->
+    <!--factory-method="aspectOf">-->
+    <!--<property name="criticismEngine" ref="criticismEngine"/>-->
+    <!--</bean>-->
 
     <aop:aspectj-autoproxy/>
 
