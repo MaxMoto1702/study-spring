@@ -1,5 +1,6 @@
-package com.rstyle.maxmoto1702.spitter;
+package com.rstyle.maxmoto1702.spitter.persistence;
 
+import com.rstyle.maxmoto1702.spitter.domain.Spitter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;

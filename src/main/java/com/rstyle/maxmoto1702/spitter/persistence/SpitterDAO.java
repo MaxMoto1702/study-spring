@@ -1,13 +1,11 @@
-package com.rstyle.maxmoto1702.spitter;
+package com.rstyle.maxmoto1702.spitter.persistence;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.rstyle.maxmoto1702.spitter.domain.Spitter;
 
 /**
  * Created by m on 05.04.2015.
  */
 public interface SpitterDAO {
-
-    void setJdbcTemplate(JdbcTemplate jdbcTemplate);
 
     void addSpitter(Spitter spitter);
 
