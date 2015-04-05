@@ -50,6 +50,8 @@
 
     <bean id="contestantDelegate" class="com.rstyle.maxmoto1702.springidol.contestants.GraciousContestant"/>
 
+    <aop:aspectj-autoproxy/>
+
     <!--<aop:config>-->
     <!--<aop:aspect ref="audience">-->
     <!--<aop:pointcut id="perfomance"-->
@@ -65,16 +67,16 @@
     <!--</aop:aspect>-->
     <!--</aop:config>-->
 
-    <aop:config>
-        <aop:aspect ref="audience">
-            <aop:pointcut id="performance2" expression=
-                    "execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"
-                    />
-            <aop:around
-                    pointcut-ref="performance2"
-                    method="watchPerformance"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config>-->
+    <!--<aop:aspect ref="audience">-->
+    <!--<aop:pointcut id="performance2" expression=-->
+    <!--"execution(* com.rstyle.maxmoto1702.springidol.Performer.perform(..))"-->
+    <!--/>-->
+    <!--<aop:around-->
+    <!--pointcut-ref="performance2"-->
+    <!--method="watchPerformance"/>-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
 
     <aop:config>
         <aop:pointcut id="thinking"
