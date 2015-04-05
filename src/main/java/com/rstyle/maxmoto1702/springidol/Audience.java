@@ -1,7 +1,9 @@
 package com.rstyle.maxmoto1702.springidol;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,26 +20,27 @@ public class Audience {
 
     }
 
-    @Before("perfomance()")
-    public void takeSeats() {
-        LOG.info("The audience is taking their seats.");
-    }
+//    @Before("perfomance()")
+//    public void takeSeats() {
+//        LOG.info("The audience is taking their seats.");
+//    }
+//
+//    @Before("perfomance()")
+//    public void turnOffCellPhones() {
+//        LOG.info("The audience is turning off their cellphones");
+//    }
+//
+//    @AfterReturning("perfomance()")
+//    public void applaud() {
+//        LOG.info("CLAP CLAP CLAP CLAP CLAP");
+//    }
+//
+//    @AfterThrowing("perfomance()")
+//    public void demandRefund() {
+//        LOG.info("Boo! We want our money back!");
+//    }
 
-    @Before("perfomance()")
-    public void turnOffCellPhones() {
-        LOG.info("The audience is turning off their cellphones");
-    }
-
-    @AfterReturning("perfomance()")
-    public void applaud() {
-        LOG.info("CLAP CLAP CLAP CLAP CLAP");
-    }
-
-    @AfterThrowing("perfomance()")
-    public void demandRefund() {
-        LOG.info("Boo! We want our money back!");
-    }
-
+    @Around("perfomance()")
     public void watchPerformance(ProceedingJoinPoint joinPoint) {
         try {
             LOG.info("The audience is taking their seats.");
@@ -48,7 +51,7 @@ public class Audience {
             LOG.info("CLAP CLAP CLAP CLAP CLAP");
             LOG.info("The performance took " + (end - start) + " milliseconds.");
         } catch (Throwable t) {
-            LOG.error("Boo! We want our money back!", t);
+            LOG.error("Boo! We want our money back! [ " + t.getClass().toString() + " ]");
         }
     }
 }
