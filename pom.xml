@@ -70,6 +70,12 @@
             <artifactId>spring-jdbc</artifactId>
             <version>4.1.6.RELEASE</version>
         </dependency>
+        <!--Spring ORM-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.1.6.RELEASE</version>
+        </dependency>
         <!--Code Generation Library-->
         <dependency>
             <groupId>cglib</groupId>
@@ -93,6 +99,12 @@
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.8.7</version>
+        </dependency>
+        <!--Hibernate-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.8.Final</version>
         </dependency>
     </dependencies>
     <build>
