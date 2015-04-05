@@ -16,4 +16,4 @@
 ##### 6.4.1. Обзор Hibernate
 ##### 6.4.2. Объявление фабрики сеансов Hibernate
 ##### 6.4.3. Создание классов для работы с Hibernate, независимых от Spring
-
+#### 6.5. Spring и Java Persistence API
