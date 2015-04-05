@@ -24,31 +24,36 @@
     <!--<property name="initialSize" value="1"/>-->
     <!--</bean>-->
 
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.sqlite.JDBC"/>
-        <property name="url"
-                  value="jdbc:sqlite:spitter.s3db"/>
-    </bean>
+    <!--<bean id="dataSource"-->
+    <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+    <!--<property name="driverClassName" value="org.sqlite.JDBC"/>-->
+    <!--<property name="url"-->
+    <!--value="jdbc:sqlite:spitter.s3db"/>-->
+    <!--</bean>-->
 
     <!--<bean id="spitterDao" class="com.rstyle.maxmoto1702.spitter.persistence.JdbcSpitterDAO">-->
     <!--<property name="dataSource" ref="dataSource"/>-->
     <!--</bean>-->
 
-    <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="mappingResources">
-            <list>
-                <value>Spitter.hbm.xml</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="dialect">org.hibernate.dialect.HSQLDialect</prop>
-            </props>
-        </property>
-    </bean>
+    <!--<bean id="sessionFactory"-->
+    <!--class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">-->
+    <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--<property name="mappingResources">-->
+    <!--<list>-->
+    <!--<value>Spitter.hbm.xml</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--<property name="hibernateProperties">-->
+    <!--<props>-->
+    <!--<prop key="dialect">org.hibernate.dialect.HSQLDialect</prop>-->
+    <!--</props>-->
+    <!--</property>-->
+    <!--</bean>-->
 
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    <!--<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>-->
+
+    <bean id="emf"
+          class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="spitterPU"/>
+    </bean>
 </beans>
