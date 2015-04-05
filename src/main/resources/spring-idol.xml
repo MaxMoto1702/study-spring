@@ -78,13 +78,13 @@
     <!--</aop:aspect>-->
     <!--</aop:config>-->
 
-    <aop:config>
-        <aop:pointcut id="thinking"
-                      expression="execution(* com.rstyle.maxmoto1702.springidol.Thinker.thinkOfSomething(String)) and args(thoughts)"/>
-        <aop:aspect ref="magician">
-            <aop:before method="interceptThoughts" pointcut-ref="thinking" arg-names="thoughts"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config>-->
+    <!--<aop:pointcut id="thinking"-->
+    <!--expression="execution(* com.rstyle.maxmoto1702.springidol.Thinker.thinkOfSomething(String)) and args(thoughts)"/>-->
+    <!--<aop:aspect ref="magician">-->
+    <!--<aop:before method="interceptThoughts" pointcut-ref="thinking" arg-names="thoughts"/>-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
 
     <!--<aop:config>-->
     <!--<aop:aspect>-->
