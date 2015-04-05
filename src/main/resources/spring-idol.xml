@@ -48,7 +48,9 @@
 
     <bean id="magician" class="com.rstyle.maxmoto1702.springidol.mindreaders.Magician"/>
 
-    <bean id="contestantDelegate" class="com.rstyle.maxmoto1702.springidol.contestants.GraciousContestant"/>
+    <!--<bean id="contestantDelegate" class="com.rstyle.maxmoto1702.springidol.contestants.GraciousContestant"/>-->
+
+    <bean id="contestantIntroduer" class="com.rstyle.maxmoto1702.springidol.contestants.ContestantIntroducer"/>
 
     <aop:aspectj-autoproxy/>
 
@@ -94,11 +96,11 @@
     <!--</aop:aspect>-->
     <!--</aop:config>-->
 
-    <aop:config>
-        <aop:aspect>
-            <aop:declare-parents types-matching="com.rstyle.maxmoto1702.springidol.Performer+"
-                                 implement-interface="com.rstyle.maxmoto1702.springidol.Contestant"
-                                 delegate-ref="contestantDelegate"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config>-->
+    <!--<aop:aspect>-->
+    <!--<aop:declare-parents types-matching="com.rstyle.maxmoto1702.springidol.Performer+"-->
+    <!--implement-interface="com.rstyle.maxmoto1702.springidol.Contestant"-->
+    <!--delegate-ref="contestantDelegate"/>-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
 </beans>
