@@ -10,11 +10,18 @@
     <!--jndi-name="/jdbc/SpitterDS"-->
     <!--resource-ref="true"/>-->
 
+    <!--<bean id="dataSource"-->
+    <!--class="org.apache.commons.dbcp2.BasicDataSource">-->
+    <!--<property name="driverClassName" value="org.sqlite.JDBC"/>-->
+    <!--<property name="url"-->
+    <!--value="jdbc:sqlite:spitter.s3db"/>-->
+    <!--<property name="initialSize" value="1"/>-->
+    <!--</bean>-->
+
     <bean id="dataSource"
-          class="org.apache.commons.dbcp2.BasicDataSource">
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.sqlite.JDBC"/>
         <property name="url"
                   value="jdbc:sqlite:spitter.s3db"/>
-        <property name="initialSize" value="1"/>
     </bean>
 </beans>
