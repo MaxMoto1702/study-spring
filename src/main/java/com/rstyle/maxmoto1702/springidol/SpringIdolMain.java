@@ -21,6 +21,8 @@ public class SpringIdolMain {
         Performer kenny = (Performer) context.getBean("kenny");
         Performer max = (Performer) context.getBean("max");
         Performer hank = (Performer) context.getBean("hank");
+        MindReader magician = (MindReader) context.getBean("magician");
+        Thinker volunteer = (Thinker) context.getBean("volunteer");
 
         Ticket ticket1 = (Ticket) context.getBean("ticket");
         Ticket ticket2 = (Ticket) context.getBean("ticket");
@@ -34,5 +36,7 @@ public class SpringIdolMain {
         } catch (PerformanceException e) {
             LOG.error("PerformanceException", e);
         }
+        volunteer.thinkOfSomething("It's volunteer's thoughts");
+        LOG.info("Magician read: '" + magician.getThoughts() + "'");
     }
 }

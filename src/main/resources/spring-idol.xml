@@ -44,6 +44,10 @@
 
     <bean id="audience" class="com.rstyle.maxmoto1702.springidol.Audience"/>
 
+    <bean id="volunteer" class="com.rstyle.maxmoto1702.springidol.Volunteer"/>
+
+    <bean id="magician" class="com.rstyle.maxmoto1702.springidol.Magician"/>
+
     <!--<aop:config>-->
     <!--<aop:aspect ref="audience">-->
     <!--<aop:pointcut id="perfomance"-->
@@ -67,6 +71,14 @@
             <aop:around
                     pointcut-ref="performance2"
                     method="watchPerformance"/>
+        </aop:aspect>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="thinking"
+                      expression="execution(* com.rstyle.maxmoto1702.springidol.Thinker.thinkOfSomething(String)) and args(thoughts)"/>
+        <aop:aspect ref="magician">
+            <aop:before method="interceptThoughts" pointcut-ref="thinking" arg-names="thoughts"/>
         </aop:aspect>
     </aop:config>
 </beans>
