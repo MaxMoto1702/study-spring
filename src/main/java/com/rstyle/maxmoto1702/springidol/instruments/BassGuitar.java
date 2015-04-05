@@ -1,5 +1,7 @@
-package com.rstyle.maxmoto1702.springidol;
+package com.rstyle.maxmoto1702.springidol.instruments;
 
+import com.rstyle.maxmoto1702.springidol.Instrument;
+import com.rstyle.maxmoto1702.springidol.PerformanceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

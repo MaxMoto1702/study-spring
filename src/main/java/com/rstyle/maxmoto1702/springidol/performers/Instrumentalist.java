@@ -1,8 +1,10 @@
-package com.rstyle.maxmoto1702.springidol;
+package com.rstyle.maxmoto1702.springidol.performers;
 
+import com.rstyle.maxmoto1702.springidol.Instrument;
+import com.rstyle.maxmoto1702.springidol.PerformanceException;
+import com.rstyle.maxmoto1702.springidol.Performer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.rmi.runtime.Log;
 
 /**
  * Created by maksim.serebryanskiy on 02.04.2015.
@@ -29,14 +31,14 @@ public class Instrumentalist implements Performer {
         return song;
     }
 
-    public String screamSong() {
-        LOG.debug("Scream song");
-        return null;
-    }
-
     public void setSong(String song) {
         LOG.debug("Set song");
         this.song = song;
+    }
+
+    public String screamSong() {
+        LOG.debug("Scream song");
+        return null;
     }
 
     public Instrument getInstrument() {

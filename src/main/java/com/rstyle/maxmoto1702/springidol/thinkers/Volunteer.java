@@ -1,5 +1,6 @@
-package com.rstyle.maxmoto1702.springidol;
+package com.rstyle.maxmoto1702.springidol.thinkers;
 
+import com.rstyle.maxmoto1702.springidol.Thinker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

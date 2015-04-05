@@ -9,20 +9,20 @@
                            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     
     <!-- Здесь должны находиться объявления компонентов -->
-    <bean id="duke" class="com.rstyle.maxmoto1702.springidol.PoeticJuggler">
+    <bean id="duke" class="com.rstyle.maxmoto1702.springidol.performers.PoeticJuggler">
         <constructor-arg value="15"/>
         <constructor-arg ref="sonnet29"/>
     </bean>
-    <bean id="kenny" class="com.rstyle.maxmoto1702.springidol.Instrumentalist"
+    <bean id="kenny" class="com.rstyle.maxmoto1702.springidol.performers.Instrumentalist"
         p:song="Полет шмеля"
         p:instrument-ref="bassGuitar"/>
-    <bean id="max" class="com.rstyle.maxmoto1702.springidol.Instrumentalist">
+    <bean id="max" class="com.rstyle.maxmoto1702.springidol.performers.Instrumentalist">
         <property name="song" value="Пилот"/>
         <property name="instrument">
-            <bean class="com.rstyle.maxmoto1702.springidol.Guitar"/>
+            <bean class="com.rstyle.maxmoto1702.springidol.instruments.Guitar"/>
         </property>
     </bean>
-    <bean id="hank" class="com.rstyle.maxmoto1702.springidol.OneManBand">
+    <bean id="hank" class="com.rstyle.maxmoto1702.springidol.performers.OneManBand">
         <property name="instruments">
             <list>
                 <ref bean="guitar"/>
@@ -30,8 +30,8 @@
             </list>
         </property>
     </bean>
-    
-    <bean id="sonnet29" class="com.rstyle.maxmoto1702.springidol.Sonnet29"/>
+
+    <bean id="sonnet29" class="com.rstyle.maxmoto1702.springidol.poems.Sonnet29"/>
 
     <bean id="stage" class="com.rstyle.maxmoto1702.springidol.Stage" factory-method="getInstance"/>
 
@@ -39,14 +39,14 @@
     
     <bean id="auditorium" class="com.rstyle.maxmoto1702.springidol.Auditorium" init-method="turnOnLights" destroy-method="turnOffLights"/>
 
-    <bean id="guitar" class="com.rstyle.maxmoto1702.springidol.Guitar"/>
-    <bean id="bassGuitar" class="com.rstyle.maxmoto1702.springidol.BassGuitar"/>
+    <bean id="guitar" class="com.rstyle.maxmoto1702.springidol.instruments.Guitar"/>
+    <bean id="bassGuitar" class="com.rstyle.maxmoto1702.springidol.instruments.BassGuitar"/>
 
     <bean id="audience" class="com.rstyle.maxmoto1702.springidol.Audience"/>
 
-    <bean id="volunteer" class="com.rstyle.maxmoto1702.springidol.Volunteer"/>
+    <bean id="volunteer" class="com.rstyle.maxmoto1702.springidol.thinkers.Volunteer"/>
 
-    <bean id="magician" class="com.rstyle.maxmoto1702.springidol.Magician"/>
+    <bean id="magician" class="com.rstyle.maxmoto1702.springidol.mindreaders.Magician"/>
 
     <!--<aop:config>-->
     <!--<aop:aspect ref="audience">-->
