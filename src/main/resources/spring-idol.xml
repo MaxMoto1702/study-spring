@@ -48,6 +48,8 @@
 
     <bean id="magician" class="com.rstyle.maxmoto1702.springidol.mindreaders.Magician"/>
 
+    <bean id="contestantDelegate" class="com.rstyle.maxmoto1702.springidol.contestants.GraciousContestant"/>
+
     <!--<aop:config>-->
     <!--<aop:aspect ref="audience">-->
     <!--<aop:pointcut id="perfomance"-->
@@ -82,11 +84,19 @@
         </aop:aspect>
     </aop:config>
 
+    <!--<aop:config>-->
+    <!--<aop:aspect>-->
+    <!--<aop:declare-parents types-matching="com.rstyle.maxmoto1702.springidol.Performer+"-->
+    <!--implement-interface="com.rstyle.maxmoto1702.springidol.Contestant"-->
+    <!--default-impl="com.rstyle.maxmoto1702.springidol.contestants.GraciousContestant"/>-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
     <aop:config>
         <aop:aspect>
             <aop:declare-parents types-matching="com.rstyle.maxmoto1702.springidol.Performer+"
                                  implement-interface="com.rstyle.maxmoto1702.springidol.Contestant"
-                                 default-impl="com.rstyle.maxmoto1702.springidol.contestants.GraciousContestant"/>
+                                 delegate-ref="contestantDelegate"/>
         </aop:aspect>
     </aop:config>
 </beans>
