@@ -1,3 +1,2 @@
 # study-spring
-Часть II. Основы приложений
-Spring
+Часть II. Основы приложений Spring
