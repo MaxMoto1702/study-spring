@@ -24,12 +24,12 @@
     <!--<property name="initialSize" value="1"/>-->
     <!--</bean>-->
 
-    <!--<bean id="dataSource"-->
-    <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-    <!--<property name="driverClassName" value="org.sqlite.JDBC"/>-->
-    <!--<property name="url"-->
-    <!--value="jdbc:sqlite:spitter.s3db"/>-->
-    <!--</bean>-->
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.sqlite.JDBC"/>
+        <property name="url"
+                  value="jdbc:sqlite:spitter.s3db"/>
+    </bean>
 
     <!--<bean id="spitterDao" class="com.rstyle.maxmoto1702.spitter.persistence.JdbcSpitterDAO">-->
     <!--<property name="dataSource" ref="dataSource"/>-->
@@ -52,8 +52,23 @@
 
     <!--<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>-->
 
-    <bean id="emf"
-          class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="spitterPU"/>
+    <!--<bean id="emf"-->
+    <!--class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">-->
+    <!--<property name="persistenceUnitName" value="spitterPU"/>-->
+    <!--</bean>-->
+
+    <bean id="emf" class=
+            "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+    </bean>
+
+    <bean id="jpaVendorAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="database" value="HSQL"/>
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="false"/>
+        <property name="databasePlatform"
+                  value="org.hibernate.dialect.HSQLDialect"/>
     </bean>
 </beans>
