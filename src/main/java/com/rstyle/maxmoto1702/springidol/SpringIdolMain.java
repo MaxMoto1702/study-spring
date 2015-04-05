@@ -30,6 +30,7 @@ public class SpringIdolMain {
         // Использование компонента duke
         try {
             duke.perform();
+            ((Contestant) duke).receiveAward();
             kenny.perform();
             max.perform();
             hank.perform();
