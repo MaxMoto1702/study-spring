@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns="http://www.springframework.org/schema/beans"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan
+            base-package="com.rstyle.maxmoto1702.spitter.persistence"/>
+
+    <!--Источник данных из JNDI / Data source from JNDI-->
+    <!--<jee:jndi-lookup id="dataSource"-->
+    <!--jndi-name="/jdbc/SpitterDS"-->
+    <!--resource-ref="true"/>-->
+
+    <!--<bean id="dataSource"-->
+    <!--class="org.apache.commons.dbcp2.BasicDataSource">-->
+    <!--<property name="driverClassName" value="org.sqlite.JDBC"/>-->
+    <!--<property name="url"-->
+    <!--value="jdbc:sqlite:spitter.s3db"/>-->
+    <!--<property name="initialSize" value="1"/>-->
+    <!--</bean>-->
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.sqlite.JDBC"/>
+        <property name="url"
+                  value="jdbc:sqlite:spitter.s3db"/>
+    </bean>
+
+    <!--<bean id="spitterDao" class="com.rstyle.maxmoto1702.spitter.persistence.JdbcSpitterDAO">-->
+    <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="sessionFactory"-->
+    <!--class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">-->
+    <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--<property name="mappingResources">-->
+    <!--<list>-->
+    <!--<value>Spitter.hbm.xml</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--<property name="hibernateProperties">-->
+    <!--<props>-->
+    <!--<prop key="dialect">org.hibernate.dialect.HSQLDialect</prop>-->
+    <!--</props>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>-->
+
+    <!--<bean id="emf"-->
+    <!--class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">-->
+    <!--<property name="persistenceUnitName" value="spitterPU"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="emf" class=-->
+    <!--"org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
+    <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>-->
+    <!--</bean>-->
+
+    <bean id="jpaVendorAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="database" value="HSQL"/>
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="false"/>
+        <property name="databasePlatform"
+                  value="org.hibernate.dialect.HSQLDialect"/>
+    </bean>
+
+    <!--<jee:jndi-lookup id="emf" jndi-name="persistence/spitterPU"/>-->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+</beans>
