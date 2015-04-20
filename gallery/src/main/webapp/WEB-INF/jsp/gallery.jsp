@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>Gallery</h1>
-
+<a href="/gallery/add">Add picture</a>
 <div align="center">
     <c:forEach items="${pictures}" var="picture">
         <div class="picture-view" style="height: 300px; width: 300px; display: inline-block">

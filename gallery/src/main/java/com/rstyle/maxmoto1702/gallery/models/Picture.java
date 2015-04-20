@@ -1,5 +1,6 @@
 package com.rstyle.maxmoto1702.gallery.models;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,9 @@ import java.util.List;
 public class Picture {
 
     private Long id;
+    @Size(min=3, max=60, message="Name must be between 3 and 60 characters long.")
     private String name;
+    @Size(min=3, max=160, message="Description must be between 3 and 160 characters long.")
     private String description;
     private Date createDate;
     private Date editDate;
@@ -79,5 +82,19 @@ public class Picture {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    @Override
+    public String toString() {
+        return "Picture{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", createDate=" + createDate +
+                ", editDate=" + editDate +
+                ", thumbPath='" + thumbPath + '\'' +
+                ", filePath='" + filePath + '\'' +
+                ", comments=" + comments +
+                '}';
     }
 }

@@ -3,9 +3,12 @@ package com.rstyle.maxmoto1702.gallery.services;
 import com.rstyle.maxmoto1702.gallery.dao.PictureDao;
 import com.rstyle.maxmoto1702.gallery.models.Picture;
 import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,12 +17,13 @@ import java.util.List;
 @Component
 public class PictureService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(PictureService.class);
+
     private static List<Picture> pictures;
 
     @Autowired
-    private
     @Setter
-    PictureDao pictureDao;
+    private PictureDao pictureDao;
 
     public List<Picture> getAllPictures() {
         pictures = pictureDao.getAll();
@@ -27,11 +31,20 @@ public class PictureService {
     }
 
     public Picture getPicture(Long pictureId) throws Exception {
-        for (Picture picture : pictures) {
-            if (picture.getId() == pictureId) {
-                return picture;
-            }
-        }
-        throw new Exception("Not found picture");
+        LOG.debug("Picture ID: " + pictureId);
+        Picture picture = pictureDao.getById(pictureId);
+        return picture;
+    }
+
+    public void add(Picture picture) {
+        pictureDao.insert(picture);
+    }
+
+    public void save(Picture picture) {
+        pictureDao.update(picture);
+    }
+
+    public void delete(Picture picture) {
+        pictureDao.delete(picture);
     }
 }

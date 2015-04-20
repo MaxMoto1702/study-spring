@@ -5,6 +5,7 @@
     <title>${picture.name}</title>
 </head>
 <body>
+<a href="/gallery">Gallery</a>
 <div align="center">
     <div class="picture-view" style="height: 600px; width: 600px; display: inline-block">
         <div style="height: 75%; width: 90%" align="center">

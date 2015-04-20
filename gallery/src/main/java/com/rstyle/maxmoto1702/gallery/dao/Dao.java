@@ -1,5 +1,7 @@
 package com.rstyle.maxmoto1702.gallery.dao;
 
+import com.rstyle.maxmoto1702.gallery.models.Picture;
+
 import java.util.List;
 
 /**
@@ -14,4 +16,6 @@ interface Dao<T> {
     void update(T object);
 
     void delete(T object);
+
+    T getById(Long id);
 }
