@@ -1,75 +1,56 @@
 package com.rstyle.maxmoto1702.gallery.dao.impl;
 
 import com.rstyle.maxmoto1702.gallery.dao.PictureDao;
-import com.rstyle.maxmoto1702.gallery.models.Client;
-import com.rstyle.maxmoto1702.gallery.models.Comment;
+import com.rstyle.maxmoto1702.gallery.mappers.PictureRowMapper;
 import com.rstyle.maxmoto1702.gallery.models.Picture;
-import org.springframework.stereotype.Component;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by m on 19.04.2015.
  */
-@Component
-public class PictureDaoImpl implements PictureDao {
+public class PictureDaoImpl extends JdbcDaoSupport implements PictureDao {
 
-    private static List<Picture> pictures;
+    private static final String SQL_SELECT_ALL = "SELECT * FROM PICTURES";
+    private static final String SQL_INSERT = "INSERT INTO PICTURES (NAME, DESCRIPTION, CREATE_DATE, EDIT_DATE, THUMB_PATH, FILE_PATH) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM PICTURES WHERE ID = ?";
+    private static final String SQL_UPDATE = "UPDATE SET NAME = ?, DESCRIPTION = ?, CREATE_DATE = ?, EDIT_DATE = ?, THUMB_PATH = ?, FILE_PATH = ? WHERE ID = ?";
 
-    static {
-        pictures = new ArrayList<Picture>();
-
-        for (long pictureIndex = 0; pictureIndex < 5; pictureIndex++) {
-            List<Comment> comments = new ArrayList<Comment>();
-            for (long commentIndex = 0; commentIndex < 10; commentIndex++) {
-                Client client = new Client();
-                client.setId(0L);
-                client.setFullName("Full Name");
-                client.setEmail("e@mail.com");
-                client.setPhone("1234567890");
-
-                Comment comment = new Comment();
-                comment.setId(commentIndex * pictureIndex);
-                comment.setPictureId(pictureIndex);
-                comment.setText("Text " + commentIndex * pictureIndex);
-                comment.setCreateDate(new Date(System.currentTimeMillis()));
-                comment.setEditDate(new Date(System.currentTimeMillis()));
-                comment.setClient(client);
-
-                comments.add(comment);
-            }
-            Picture picture = new Picture();
-            picture.setId(pictureIndex);
-            picture.setName("Name " + pictureIndex);
-            picture.setDescription("Description " + pictureIndex);
-            picture.setCreateDate(new Date(System.currentTimeMillis()));
-            picture.setEditDate(new Date(System.currentTimeMillis()));
-            picture.setThumbPath("thumb" + pictureIndex);
-            picture.setFilePath("file" + pictureIndex);
-            picture.setComments(comments);
-            pictures.add(picture);
-        }
-    }
-
+    // Vjжет не связаться
     @Override
     public List<Picture> getAll() {
+        List<Picture> pictures;
+        pictures = getJdbcTemplate().query(SQL_SELECT_ALL, new PictureRowMapper());
         return pictures;
     }
 
     @Override
     public void insert(Picture picture) {
-        pictures.add(picture);
+        getJdbcTemplate().update(SQL_INSERT,
+                picture.getName(),
+                picture.getDescription(),
+                picture.getCreateDate(),
+                picture.getEditDate(),
+                picture.getThumbPath(),
+                picture.getFilePath());
     }
 
     @Override
     public void update(Picture picture) {
-
+        getJdbcTemplate().update(SQL_UPDATE,
+                picture.getName(),
+                picture.getDescription(),
+                picture.getCreateDate(),
+                picture.getEditDate(),
+                picture.getThumbPath(),
+                picture.getFilePath(),
+                picture.getId());
     }
 
     @Override
     public void delete(Picture picture) {
-        pictures.remove(picture);
+        getJdbcTemplate().update(SQL_DELETE,
+                picture.getId());
     }
 }

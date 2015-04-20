@@ -8,7 +8,7 @@
 <div align="center">
     <div class="picture-view" style="height: 600px; width: 600px; display: inline-block">
         <div style="height: 75%; width: 90%" align="center">
-            <img src="/resources/images/${picture.id}.jpg" style="height: 100%; width: 100%">
+            <img src="${picture.filePath}" style="height: 100%; width: 100%">
         </div>
         <div style="height: 10%;width: 100%">
             <div align="left" style="width: 50%; display: inline-block">

@@ -19,4 +19,7 @@
           p:viewClass="org.springframework.web.servlet.view.JstlView"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp"/>
+
+    <bean class="com.rstyle.maxmoto1702.gallery.dao.impl.PictureDaoImpl"
+          p:dataSource-ref="dataSource"/>
 </beans>

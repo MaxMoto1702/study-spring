@@ -21,7 +21,7 @@
         <div class="picture-view" style="height: 300px; width: 300px; display: inline-block">
             <div style="height: 75%; width: 90%" align="center">
                 <a href="/gallery/view/${picture.id}">
-                    <img src="/resources/images/${picture.id}.jpg" style="height: 100%; width: 100%">
+                    <img src="${picture.thumbPath}" style="height: 100%; width: 100%">
                 </a>
             </div>
             <div style="height: 10%;width: 100%">
